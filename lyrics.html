@@ -272,5 +272,18 @@ Please bestow your grace upon me. </div>
 </main>
 
 <footer>© Massive Scar Era</footer>
+  <script>
+document.querySelectorAll('.lyr .text').forEach(function (el) {
+  var lines = el.innerHTML.replace(/\r/g, '').split('\n');
+  var out = [];
+  lines.forEach(function (l) {
+    var t = l.replace(/\s/g, '');
+    if (t === '') return;
+    if (/^(&nbsp;|\u00a0)+$/.test(t)) { if (out.length && out[out.length-1] !== '') out.push(''); return; }
+    out.push(l.trim());
+  });
+  el.innerHTML = out.join('\n');
+});
+</script>
 </body>
 </html>
